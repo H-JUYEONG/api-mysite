@@ -23,7 +23,7 @@ public class MysiteController {
 
 		int count = userService.exeJoinUser(userVo);
 
-		return count;
+		return count; 
 	}
 
 }
