@@ -31,7 +31,7 @@ public class UserController {
 			// 토큰을 만들고 '응답문서의 헤더'에 토큰을 붙여서 보낸다
 			JwtUtil.createTokenAndSetHeader(response, "" + authUser.getNo()); // getNo를 "" 이용해서 문자열로 바꿈
 			return JsonResult.success(authUser);
-			
+
 		} else {
 			return JsonResult.fail("로그인 실패");
 		}
