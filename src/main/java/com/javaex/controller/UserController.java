@@ -11,7 +11,7 @@ import com.javaex.vo.UserVo;
 
 @RestController
 @Controller
-public class MysiteController {
+public class UserController {
 	
 	@Autowired
 	private UserService userService;
