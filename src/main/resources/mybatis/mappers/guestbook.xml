@@ -13,7 +13,7 @@
 			       password,     
 			       content,
 			       reg_date as regDate
-			from guest
+			from guestbook
 		]]>
 	</select>
 
@@ -25,7 +25,7 @@
 			       password,     
 			       content,
 			       reg_date
-			from guest
+			from guestbook
 			where no = #{no}
 		]]>
 	</select>
@@ -33,7 +33,7 @@
 	<!-- 등록 -->
 	<insert id="insert" parameterType="com.javaex.vo.GuestVo"> 
 		<![CDATA[   
-			insert into guest (name, password, content)
+			insert into guestbook (name, password, content)
 			values (#{name}, #{password}, #{content})
 		]]>
 	</insert>
@@ -41,7 +41,7 @@
 	<!-- 삭제 -->
 	<delete id="delete" parameterType="com.javaex.vo.GuestVo">
 		<![CDATA[     
-			delete from guest
+			delete from guestbook
 			where password = #{password}
 			and no = #{no}
 		]]>
