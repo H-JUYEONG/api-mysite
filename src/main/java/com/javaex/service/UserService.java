@@ -28,7 +28,6 @@ public class UserService {
 		UserVo authUser = userDao.selectUser(userVo);
 
 		return authUser;
-
 	}
 
 	/* 회원정보 수정 폼 */
@@ -41,15 +40,15 @@ public class UserService {
 	}
 
 	/* 회원정보 수정 */
-	public UserVo exeUserModify(UserVo userVo) {
+	public int exeUserModify(UserVo userVo) {
 		System.out.println("UserService.exeUserModify()");
 
 		int count = userDao.modifyUser(userVo);
 
 		// 회원번호(no)를 이용해서 수정된 회원의 정보를 객체로 저장
-		UserVo modifyUserInfo = userDao.selectInfo(userVo.getNo());
+		//UserVo modifyUserInfo = userDao.selectInfo(userVo.getNo());
 
-		return modifyUserInfo;
+		return count;
 	}
 
 	/* 아이디 중복 체크 */
