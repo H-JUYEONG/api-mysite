@@ -24,7 +24,7 @@ public class GuestbookDao {
 	// 메소드 일반
 	// DB연결 메소드
 
-	/* 전체 가져오기 */
+	/* 방명록 목록 */
 	public List<GuestVo> getGuestList() {
 		System.out.println("GuestbookDao.getGuestList()");
 		List<GuestVo> guestList = sqlSession.selectList("guestbook.selectList");

@@ -20,7 +20,7 @@ public class GuestbookController {
 	@Autowired
 	private GuestbookService guestbookService;
 	
-	/* 리스트 가져오기 */
+	/* 방명록 목록 */
 	@GetMapping("/api/guests")
 	public JsonResult getList() {
 		System.out.println("GuestbookController.getList()");

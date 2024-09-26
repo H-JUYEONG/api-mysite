@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="board">
+
+	<!-- 게시판 목록(리스트 전체 가져오기) -->
+	<select id="selectList" resultType="BoardVo">
+		<![CDATA[ 
+			select b.no,
+				   b.title,
+				   u.name,
+				   b.content,
+				   b.hit,
+				   b.reg_date as regDate,
+				   b.user_no as userNo
+			from board b
+			inner join users u 
+			on b.user_no = u.no
+			order by b.no
+		]]>
+	</select>
+	
+	<!-- 선택한 게시판 글 내용 가져오기 -->
+    <select id="selectContent" parameterType="int" resultType="BoardVo">
+      <![CDATA[   
+         select b.no,
+                b.title,
+                u.name,
+                b.content,
+                b.hit,
+                b.reg_date as regDate,
+                b.user_no as userNo
+         from board b
+         inner join users u
+            on b.user_no = u.no
+         where b.no = #{no}
+      ]]>
+    </select>
+   
+   <!-- 조회수 증가 -->
+	<update id="updateHit" parameterType="int">
+		<![CDATA[
+		 	update board
+		 	set hit = hit + 1
+		 	where no = #{no}
+	]]>
+	</update>
+	
+	<!-- 게시판 등록 -->
+	<insert id="insert" parameterType="BoardVo">
+		<![CDATA[   
+			insert into board (title, content, reg_date, user_no) 
+			values (#{title}, #{content}, now(), #{userNo})
+		]]>
+	</insert>
+	
+	<!-- 게시판 수정 -->
+	<update id="update" parameterType="BoardVo">
+		<![CDATA[
+		 	update board
+		 	set title = #{title},
+		 	content = #{content}
+		 	where no = #{no}
+	]]>
+	</update>
+	
+	<!-- 게시판 삭제 -->
+	<delete id="delete" parameterType="int">
+		<![CDATA[
+		 	delete from board
+		 	where no = #{no}
+	]]>
+	</delete>
+
+
+
+</mapper>

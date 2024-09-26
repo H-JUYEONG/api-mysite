@@ -14,7 +14,7 @@ public class GuestbookService {
 	@Autowired
 	private GuestbookDao guestbookDao;
 	
-	/* 전체 가져오기 */
+	/* 방명록 목록 */
 	public List<GuestVo> exeGetGuestList() {
 		
 		System.out.println("GuestbookService.exeGetGuestList()");
