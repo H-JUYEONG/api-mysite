@@ -23,7 +23,7 @@ public class BoardService {
 		return boardList;
 	}
 
-	/* 게시판 읽기 */
+	/* 게시판 읽기 (BoardRead) */
 	public BoardVo exeGetContent(int no) {
 		System.out.println("BoardService.exeGetContent()");
 		
@@ -35,12 +35,18 @@ public class BoardService {
 		return boardVo;
 	}
 	
-	/* 게시판 등록 */
-	public int exeWrite(BoardVo boardVo, int no) {
-		System.out.println("BoardService.exeWrite()");
+	/* 게시판 읽기 (BoardModifyForm) */
+	public BoardVo exeGetContent2(int no) {
+		System.out.println("BoardService.exeGetContent()");
 		
-		// xml mapper에 parameterType="BoardVo"이므로 boardVo 형태로 보내줘야함 -> 매개변수 no값을 set으로 넣어서 하나의 객체로 만들기
-		boardVo.setUserNo(no);
+		BoardVo boardVo = boardDao.selectContent(no);
+		
+		return boardVo;
+	}
+	
+	/* 게시판 등록 */
+	public int exeWrite(BoardVo boardVo) {
+		System.out.println("BoardService.exeWrite()");
 		
 		int count = boardDao.insertBoard(boardVo);
 		
