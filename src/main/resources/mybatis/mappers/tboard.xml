@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="tboard">
+	
+	<!-- 전체리스트가져오기 리스트3(검색O, 페이징O)-->
+	<select id="selectList3"  parameterType="map" resultType="TboardVo">
+	<![CDATA[
+		SELECT  b.no,
+        		b.title,
+        		b.content,
+        		u.name,
+        		b.hit,
+        		date_format(b.reg_date,'%Y-%m-%d %H:%i:%s') regDate,
+        		u.no userNo
+		FROM tboard b, users u
+		WHERE  b.user_no = u.no
+	]]>
+	<if test="keyword != null">
+	<![CDATA[
+		and b.title like concat('%',#{keyword},'%')
+	]]>
+	</if>
+	<![CDATA[
+		order by no	
+		limit #{StartRowNo}, #{listCnt}
+	]]>
+	</select>
+	
+	<!-- 전체 글 갯수 구하기 -->
+	<select id="selectTotalCntKeyword" parameterType="String" resultType="int" >
+		<![CDATA[
+			select count(*) count
+			from tboard
+		]]>
+		<if test="keyword != null">
+		<![CDATA[
+			where title like concat('%',#{keyword},'%')	
+		]]>
+		</if>
+	</select>
+	
+
+</mapper>

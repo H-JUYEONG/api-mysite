@@ -7,11 +7,13 @@
 		<typeAlias alias="GuestVo" type="com.javaex.vo.GuestVo" />
 		<typeAlias alias="BoardVo" type="com.javaex.vo.BoardVo" />
 		<typeAlias alias="AttachVo" type="com.javaex.vo.AttachVo" />
+		<typeAlias alias="TboardVo" type="com.javaex.vo.TboardVo" />
 	</typeAliases>
 	<mappers>
 		<mapper resource="mybatis/mappers/user.xml" />
 		<mapper resource="mybatis/mappers/guestbook.xml" />
 		<mapper resource="mybatis/mappers/board.xml" />
 		<mapper resource="mybatis/mappers/attach.xml" />
+		<mapper resource="mybatis/mappers/tboard.xml" />
 	</mappers>
 </configuration>

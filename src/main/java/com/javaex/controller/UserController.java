@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.javaex.service.UserService;
@@ -31,6 +32,21 @@ public class UserController {
 		int count = userService.exeJoinUser(userVo);
 
 		return count;
+	}
+	
+	/* ID 중복 체크 */
+	@GetMapping("/api/users/idcheck")
+	public JsonResult idCheck(@RequestParam("id") String id) {
+		System.out.println("UserController.idCheck()");
+		
+		boolean result = userService.exeIdCheck(id);
+		
+		if(result == true) {
+			return JsonResult.success(result);
+		} else {
+			return JsonResult.fail("사용할 수 없는 아이디입니다.");
+		}
+		
 	}
 
 	/* 로그인 */
