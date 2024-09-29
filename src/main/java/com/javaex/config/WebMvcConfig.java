@@ -21,6 +21,20 @@ public class WebMvcConfig implements WebMvcConfigurer {
     
     @Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		registry.addResourceHandler("/upload/**").addResourceLocations("file:C:\\javaStudy\\upload\\");
+    	
+    	String saveDir;
+    	String osName = System.getProperty("os.name").toLowerCase();
+    	
+    	if(osName.contains("linux")) {
+			System.out.println("리눅스");
+			saveDir = "/app/upload/";
+			
+		} else {
+			System.out.println("윈도우");
+			saveDir = "C:\\javaStudy\\upload\\";
+		}
+    	
+    	registry.addResourceHandler("/upload/**")
+		.addResourceLocations("file:" + saveDir);
 	}
 }
