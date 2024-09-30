@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.javaex.dao.TboardDao;
+import com.javaex.vo.BoardVo;
 import com.javaex.vo.TboardVo;
 
 @Service
@@ -59,7 +60,7 @@ public class TboardService {
 		List<TboardVo> tboardList = tboardDao.selectList(limitMap);
 
 		// 페이지당 버튼 갯수
-		int pageBtnCount = 5;
+		int pageBtnCount = 10;
 		
 		// DB에서 데이터 전체 글 갯수 가져오기
 		int totalCnt = tboardDao.selectTotalCntKeyword(keyword); 
@@ -122,6 +123,55 @@ public class TboardService {
 		pMap.put("next", next);
 		
 		return pMap;
+	}
+	
+	/* 게시판 읽기 (BoardRead) */
+	public BoardVo exeGetContent(int no) {
+		System.out.println("BoardService.exeGetContent()");
+		
+		// 조회수 증가
+		tboardDao.updateHit(no);
+		
+		BoardVo boardVo = tboardDao.selectContent(no);
+		
+		return boardVo;
+	}
+	
+	/* 게시판 읽기 (BoardModifyForm) */
+	public BoardVo exeGetContent2(int no) {
+		System.out.println("BoardService.exeGetContent()");
+		
+		BoardVo boardVo = tboardDao.selectContent(no);
+		
+		return boardVo;
+	}
+	
+	/* 게시판 등록 */
+	public int exeWrite(BoardVo boardVo) {
+		System.out.println("BoardService.exeWrite()");
+		
+		int count = tboardDao.insertBoard(boardVo);
+		
+		return count;
+	}
+	
+	/* 게시판 수정 */
+	public int exeModifyBoard(BoardVo boardVo) {
+		System.out.println("BoardService.exeModifyBoard()");
+		
+		int count = tboardDao.modifyBoard(boardVo);
+		
+		return count;
+	}
+	
+	/* 게시판 삭제 */
+	public int exeDeleteBoard(int no) {
+		System.out.println("BoardService.exeDeleteBoard()");
+		
+		int count = tboardDao.deleteBoard(no);
+		
+		return count;
+				
 	}
 
 }
