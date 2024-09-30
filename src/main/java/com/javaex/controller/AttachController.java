@@ -34,7 +34,7 @@ public class AttachController {
 
 		String saveName = attachService.exeUpload2(attachVo2);
 
-		return JsonResult.success("saveName");
+		return JsonResult.success(saveName);
 	}
 
 }
