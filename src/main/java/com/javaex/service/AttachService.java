@@ -33,7 +33,8 @@ public class AttachService {
 		// 파일 저장 폴더
 		if (osName.contains("linux")) {
 			System.out.println("리눅스");
-			saveDir = "/home/ec2-user/upload"; // 아래에서 File.separator로 os를 판단해서 \\인지 /인지 넣어주기때문에 끝에 /를 넣을 필요가 없음
+			//saveDir = "/home/ec2-user/upload"; // 아래에서 File.separator로 os를 판단해서 \\인지 /인지 넣어주기때문에 끝에 /를 넣을 필요가 없음
+			saveDir = "/app/upload";
 		} else {
 			System.out.println("윈도우");
 			saveDir = "C:\\javaStudy\\upload";
@@ -100,7 +101,8 @@ public class AttachService {
 		// 파일 저장 폴더
 		if (osName.contains("linux")) {
 			System.out.println("리눅스");
-			saveDir = "/home/ec2-user/upload";
+			//saveDir = "/home/ec2-user/upload"; // 아래에서 File.separator로 os를 판단해서 \\인지 /인지 넣어주기때문에 끝에 /를 넣을 필요가 없음
+			saveDir = "/app/upload";
 		} else {
 			System.out.println("윈도우");
 			saveDir = "C:\\javaStudy\\upload";
