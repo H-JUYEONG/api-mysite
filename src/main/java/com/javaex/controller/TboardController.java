@@ -21,8 +21,10 @@ public class TboardController {
 	public JsonResult getList(@RequestParam(value = "crtpage", required = false, defaultValue = "1") int crtPage,
 		    @RequestParam(value = "keyword", required = false, defaultValue = "") String keyword) {
 		System.out.println("BoardController.getList()");
+		System.out.println("-----");
 		System.out.println(crtPage);
 		System.out.println(keyword);
+		System.out.println("-----");
 
 		Map<String, Object> pMap = tboardService.exeGetList(crtPage, keyword);
 		System.out.println(pMap);
