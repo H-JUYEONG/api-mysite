@@ -1,6 +1,6 @@
 name: Deploy mysite App
 
-
+# github에 push를 해도 자동으로 linux가 실행되지 않음 -> 따로 github의 Action에서 workflow run 해줘야 함 
 on:
   workflow_dispatch:
     inputs:
